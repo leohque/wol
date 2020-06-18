@@ -220,6 +220,7 @@ input[type="range"]::-webkit-slider-thumb {
   margin-top: -8px;
   border-radius:12px;
   background:rgba(96, 76, 134, 1);
+  border:none;
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -228,6 +229,7 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
   border-radius:12px;
   background:rgba(96, 76, 134, 1);
+  border:none;
 }
 
 input[type="range"]::-ms-thumb {
@@ -235,6 +237,7 @@ input[type="range"]::-ms-thumb {
   width: 25px;
   cursor: pointer;
   border-radius:12px;
+  border:none;
 }
 
 /*
