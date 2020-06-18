@@ -132,12 +132,17 @@ const fullnessChart = new Chart(fullnessctx, {
       }]
   },
   options: {
+    layout: {
+      padding: {
+        top: 5
+      }
+    },
     responsive: false,
     legend: {
       labels: {
         fontColor: "black"
       },
-      display: true,
+      display: false,
       position: 'right'
     },
     scale: {

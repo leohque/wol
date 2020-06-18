@@ -18,58 +18,47 @@
         <div class="categories">
           <div class="cat-box">
             <input type="text" id="category1">
-            <input type="range" id="fullnessrange1" name="fullnessrange1" value="5" min="0" max="10">
+            <input type="range" id="fullnessrange1" name="fullnessrange1" class="fullnessrange" value="5" min="0" max="10">
             <span type="number" id="fullness1">5</span>
           </div>
           <div class="cat-box">
             <input type="text" id="category2">
-            <input type="range" id="fullnessrange2" name="fullnessrange2" value="5" min="0" max="10">
+            <input type="range" id="fullnessrange2" name="fullnessrange2" class="fullnessrange" value="5" min="0" max="10">
             <span type="number" id="fullness2">5</span>
           </div>
           <div class="cat-box">
             <input type="text" id="category3">
-            <input type="range" id="fullnessrange3" name="fullnessrange3" value="5" min="0" max="10">
+            <input type="range" id="fullnessrange3" name="fullnessrange3" class="fullnessrange" value="5" min="0" max="10">
             <span type="number" id="fullness3">5</span>
           </div>
           <div class="cat-box">
             <input type="text" id="category4">
-            <input type="range" id="fullnessrange4" name="fullnessrange4" value="5" min="0" max="10">
+            <input type="range" id="fullnessrange4" name="fullnessrange4" class="fullnessrange" value="5" min="0" max="10">
             <span type="number" id="fullness4">5</span>
           </div>
           <div class="cat-box">
           <input type="text" id="category5">
-            <input type="range" id="fullnessrange5" name="fullnessrange5" value="5" min="0" max="10">
+            <input type="range" id="fullnessrange5" name="fullnessrange5" class="fullnessrange" value="5" min="0" max="10">
             <span type="number" id="fullness5">5</span>
           </div>
           <div class="cat-box">
             <input type="text" id="category6">
-            <input type="range" id="fullnessrange6" name="fullnessrange6" value="5" min="0" max="10">
+            <input type="range" id="fullnessrange6" name="fullnessrange6" class="fullnessrange" value="5" min="0" max="10">
             <span type="number" id="fullness6">5</span>
           </div>
           <div class="cat-box">
             <input type="text" id="category7">
-            <input type="range" id="fullnessrange7" name="fullnessrange7" value="5" min="0" max="10">
+            <input type="range" id="fullnessrange7" name="fullnessrange7" class="fullnessrange" value="5" min="0" max="10">
             <span type="number" id="fullness7">5</span>
           </div>
           <div class="cat-box">
             <input type="text" id="category8">
-            <input type="range" id="fullnessrange8" name="fullnessrange8" value="5" min="0" max="10">
+            <input type="range" id="fullnessrange8" name="fullnessrange8" class="fullnessrange" value="5" min="0" max="10">
             <span type="number" id="fullness8">5</span>
           </div>
         </div>
       </div>
-      <!-- <div class="developed">
-        <h3>What do you do here?</h3>
-        <input type="text" id="developed1">
-        <input type="text" id="developed2">
-        <input type="text" id="developed3">
-        <input type="text" id="developed4">
-        <input type="text" id="developed5">
-        <input type="text" id="developed6">
-        <input type="text" id="developed7">
-        <input type="text" id="developed8">
-        </div> -->
-      <canvas id="ctx-fullness" width="400" height="300"></canvas>
+      <canvas id="ctx-fullness"></canvas>
     </div>
 
     <div id="part2" class="nodisplay">
@@ -189,11 +178,11 @@
           <span class="sum" data-num="17">+</span>
         </div>
       </div>
-      <div class="time-values">
+      <div class="time-category time-values">
         Remaining:
-        <input type="number" id="timeRemaining" value="112" disabled>
+        <input id="timeRemaining" value="112" disabled>
           vs.
-        <input type="number" id="desiredtimeRemaining" value="112" disabled>
+        <input id="desiredtimeRemaining" value="112" disabled>
       </div>
 
       <div class="timecanvas">
