@@ -516,6 +516,33 @@ desiredtimeValues.forEach((value) => {
 });
 
 
+function substractVal() {
+  let cat = document.querySelector(`.num${this.dataset.num}`);
+  if ((parseInt(cat.value)) !== 0) {
+    let val = parseInt(cat.value) - 1;
+    cat.value = val;
+    modifyTime();
+  } else {
+    cat.value = 0;
+  }
+}
+
+function addVal() {
+  let cat = document.querySelector(`.num${this.dataset.num}`);
+  let val = parseInt(cat.value) + 1;
+  cat.value = val;
+  modifyTime();
+}
+const negs = document.querySelectorAll('.neg');
+const sums = document.querySelectorAll('.sum');
+negs.forEach((neg) => {
+  neg.addEventListener('click', substractVal);
+});
+sums.forEach((sum) => {
+  sum.addEventListener('click', addVal);
+});
+
+
 
 
 // const emailbody = "<h1>Can this have HTML?</h1>";

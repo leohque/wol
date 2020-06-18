@@ -74,66 +74,128 @@
 
     <div id="part2" class="nodisplay">
       <h2>Where do you actually spend your time?</h2>
-      <p>There's 168 hours per week. That's based on reality.</p>
+      <p>Based on reality, there's 168 hours per week.</p>
       <p>How many hours do you spend sleeping?</p>
-        <div class="time-sleeping">
-          😴 <input type="number" value="56" id="timeSleeping"> hours 💤<br>
-          <sub>(56 assumes 8 hours per night)</sub>
-        </div>
+      <div class="time-sleeping">
+        😴 <input type="number" value="56" id="timeSleeping"> hours 💤<br>
+        <sub>(56 assumes 8 hours per night)</sub>
+      </div>
       <div class="time-values">
         <div class="time-total nodisplay">Total hours per week: <input type="number" value="168" id="timeTotal" disabled> (168 is reality)</div>
-        <div class="time-available">That means you're awake for <input type="text" value="112" id="timeAvailable" disabled> hours.
-        <p>How do you spend that time?</p></div>
+        <div class="time-available">That means you're awake for <input type="text" value="112" id="timeAvailable" disabled> hours.</div>
+        <p>How do you spend that time?</p>
       </div>
-      <div class="time-table">
-          <div class="time-category">
-            <input type="text" id="time-category1" disabled>
-            <input type="number" id="time1">
-            <input type="number" id="desiredtime1">
-          </div>
-          <div class="time-category">
-            <input type="text" id="time-category2" disabled>
-            <input type="number" id="time2">
-            <input type="number" id="desiredtime2">
-          </div>
-          <div class="time-category">
-            <input type="text" id="time-category3" disabled>
-            <input type="number" id="time3">
-            <input type="number" id="desiredtime3">
-          </div>
-          <div class="time-category">
-            <input type="text" id="time-category4" disabled>
-            <input type="number" id="time4">
-            <input type="number" id="desiredtime4">
-          </div>
-          <div class="time-category">
-            <input type="text" id="time-category5" disabled>
-            <input type="number" id="time5">
-            <input type="number" id="desiredtime5">
-          </div>
-          <div class="time-category">
-            <input type="text" id="time-category6" disabled>
-            <input type="number" id="time6">
-            <input type="number" id="desiredtime6">
-          </div>
-          <div class="time-category">
-            <input type="text" id="time-category7" disabled>
-            <input type="number" id="time7">
-            <input type="number" id="desiredtime7">
-          </div>
-          <div class="time-category">
-            <input type="text" id="time-category8" disabled>
-            <input type="number" id="time8">
-            <input type="number" id="desiredtime8">
-          </div>
-        <div class="time-values">
-          <input type="number" id="timeRemaining" value="112" disabled>
+      <div class="time-category">
+        <input type="text" id="time-category1">
+        <div class="time-math">
+          <span class="neg" data-num="1">-</span>
+          <input id="time1" class="num1 num" data-time="actual" data-cat="1" data-num="1" value="0">
+          <span class="sum" data-num="1">+</span>
         </div>
-        <div>vs.</div>
-        <div class="desired-time-values">
-          <input type="number" id="desiredtimeRemaining" value="112" disabled>
+        <div class="time-math">
+          <span class="neg" data-num="2">-</span>
+          <input id="desiredtime1" class="num2 num" data-time="desired" data-cat="1" data-num="2" value="0">
+          <span class="sum" data-num="2">+</span>
         </div>
       </div>
+      <div class="time-category">
+        <input type="text" id="time-category2">
+        <div class="time-math">
+          <span class="neg" data-num="3">-</span>
+          <input id="time2" class="num3 num" data-time="actual" data-cat="2" data-num="3" value="0">
+          <span class="sum" data-num="3">+</span>
+        </div>
+        <div class="time-math">
+          <span class="neg" data-num="4">-</span>
+          <input id="desiredtime2" class="num4 num" data-time="desired" data-cat="2" data-num="4" value="0">
+          <span class="sum" data-num="4">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category3">
+        <div class="time-math">
+          <span class="neg" data-num="5">-</span>
+          <input id="time3" class="num5 num" data-time="actual" data-cat="3" data-num="3" value="0">
+          <span class="sum" data-num="5">+</span>
+        </div>
+        <div class="time-math">
+          <span class="neg" data-num="6">-</span>
+          <input id="desiredtime3" class="num6 num" data-time="desired" data-cat="3" data-num="4" value="0">
+          <span class="sum" data-num="6">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category4">
+        <div class="time-math">
+          <span class="neg" data-num="7">-</span>
+          <input id="time4" class="num7 num" data-time="actual" data-cat="4" data-num="3" value="0">
+          <span class="sum" data-num="7">+</span>
+        </div>
+        <div class="time-math">
+          <span class="neg" data-num="8">-</span>
+          <input id="desiredtime4" class="num8 num" data-time="desired" data-cat="4" data-num="4" value="0">
+          <span class="sum" data-num="8">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category5">
+        <div class="time-math">
+          <span class="neg" data-num="9">-</span>
+          <input id="time5" class="num9 num" data-time="actual" data-cat="5" data-num="3" value="0">
+          <span class="sum" data-num="9">+</span>
+        </div>
+        <div class="time-math">
+          <span class="neg" data-num="11">-</span>
+          <input id="desiredtime5" class="num11 num" data-time="desired" data-cat="5" data-num="4" value="0">
+          <span class="sum" data-num="11">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category6">
+        <div class="time-math">
+          <span class="neg" data-num="12">-</span>
+          <input id="time6" class="num12 num" data-time="actual" data-cat="6" data-num="3" value="0">
+          <span class="sum" data-num="12">+</span>
+        </div>
+        <div class="time-math">
+          <span class="neg" data-num="13">-</span>
+          <input id="desiredtime6" class="num13 num" data-time="desired" data-cat="6" data-num="4" value="0">
+          <span class="sum" data-num="13">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category7">
+        <div class="time-math">
+          <span class="neg" data-num="14">-</span>
+          <input id="time7" class="num14 num" data-time="actual" data-cat="7" data-num="3" value="0">
+          <span class="sum" data-num="14">+</span>
+        </div>
+        <div class="time-math">
+          <span class="neg" data-num="15">-</span>
+          <input id="desiredtime7" class="num15 num" data-time="desired" data-cat="7" data-num="4" value="0">
+          <span class="sum" data-num="15">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category8">
+        <div class="time-math">
+          <span class="neg" data-num="16">-</span>
+          <input id="time8" class="num16 num" data-time="actual" data-cat="8" data-num="3" value="0">
+          <span class="sum" data-num="16">+</span>
+        </div>
+        <div class="time-math">
+          <span class="neg" data-num="17">-</span>
+          <input id="desiredtime8" class="num17 num" data-time="desired" data-cat="8" data-num="4" value="0">
+          <span class="sum" data-num="17">+</span>
+        </div>
+      </div>
+      <div class="time-values">
+        Remaining:
+        <input type="number" id="timeRemaining" value="112" disabled>
+          vs.
+        <input type="number" id="desiredtimeRemaining" value="112" disabled>
+      </div>
+
       <div class="timecanvas">
         <canvas id="ctx-time" width="400" height="300"></canvas>
         <canvas id="ctx-desiredtime" width="400" height="300"></canvas>
