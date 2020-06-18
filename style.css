@@ -2,6 +2,10 @@ body, html {
   overflow-x: hidden;
 }
 
+* {
+  font-family: sans-serif;
+}
+
 #navigator {
   width:50%;
   margin:0 auto;
@@ -106,14 +110,14 @@ canvas {
 .time-category .num {
   width:36px;
   text-align:center;
-  font-size:32px;
+  font-size:24px;
 }
 
 .time-category input[type="text"] {
   text-align:right;
   border:none;
   width:100px;
-  font-size:24px;
+  font-size:18px;
 }
 
 .time-category span {
@@ -167,7 +171,11 @@ canvas {
 }
 
 .time-values {
-  font-size:24px;
+  font-size:16px;
+}
+
+.time-remaining {
+  border-top:1px dashed rgba(0,0,0,0.3);
 }
 
 .time-values input, .desired-time-values input {
