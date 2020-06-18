@@ -240,7 +240,7 @@ input[type="range"]::-ms-thumb {
   border:none;
 }
 
-/*
+
 #fullnessrange1::-webkit-slider-thumb { background: rgba(39, 163, 73, 1); }
 #fullnessrange1::-moz-range-thumb { background: rgba(39, 163, 73, 1); }
 #fullnessrange1::-ms-thumb {
@@ -280,7 +280,7 @@ input[type="range"]::-ms-thumb {
 #fullnessrange8::-moz-range-thumb { background: rgba(69, 250, 249, 1); }
 #fullnessrange8::-ms-thumb {
   background: rgba(69, 250, 249, 1);
-}*/
+}
 
 /*#############Track##############*/
 
