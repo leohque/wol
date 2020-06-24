@@ -96,6 +96,11 @@ const timeRemaining = document.getElementById('timeRemaining');
 const desiredtimeRemaining = document.getElementById('desiredtimeRemaining');
 
 
+const actualBtn = document.getElementById('btn-actual');
+const desiredBtn = document.getElementById('btn-desired');
+const negs = document.querySelectorAll('.neg');
+const sums = document.querySelectorAll('.sum');
+
 // Charts
 
 const fullnessctx = document.getElementById('ctx-fullness');
@@ -234,7 +239,7 @@ const desiredtimeChart = new Chart(desiredtimectx, {
             0, 0, 0, 0, 0, 0, 0, 0, 112
           ],
           backgroundColor: [
-              'rgba(39, 163, 73, )',
+              'rgba(39, 163, 73, 1)',
               'rgba(241, 222, 17, 1)',
               'rgba(236, 129, 37, 1)',
               'rgba(243, 44, 44, 1)',
@@ -266,7 +271,7 @@ const desiredtimeChart = new Chart(desiredtimectx, {
         fontColor: "black"
       },
       display: true,
-      position: 'right'
+      position: 'left'
     },
       animation: {
         animateRotate: false
@@ -352,6 +357,35 @@ const timebarChart = new Chart(timebarctx, {
 
 
 // Utils
+
+
+
+function handleTimeChart() {
+  if (this.classList.contains('actual')) {
+    desiredtimectx.classList.add('nodisplay');
+    timectx.classList.remove('nodisplay');
+    actualBtn.classList.add('emphasize');
+    desiredBtn.classList.remove('emphasize');
+  } else {
+    timectx.classList.add('nodisplay');
+    desiredtimectx.classList.remove('nodisplay');
+    desiredBtn.classList.add('emphasize');
+    actualBtn.classList.remove('emphasize');
+  }
+}
+
+sums.forEach((sum) => sum.addEventListener('click', handleTimeChart));
+sums.forEach((sum) => sum.addEventListener('mouseover', handleTimeChart));
+negs.forEach((neg) => neg.addEventListener('click', handleTimeChart));
+negs.forEach((neg) => neg.addEventListener('mouseover', handleTimeChart));
+
+
+actualBtn.addEventListener('click', handleTimeChart);
+actualBtn.addEventListener('mouseover', handleTimeChart);
+desiredBtn.addEventListener('click', handleTimeChart);
+desiredBtn.addEventListener('mouseover', handleTimeChart);
+
+
 
 
 // Session Handlers
@@ -538,8 +572,7 @@ function addVal() {
   cat.value = val;
   modifyTime();
 }
-const negs = document.querySelectorAll('.neg');
-const sums = document.querySelectorAll('.sum');
+
 negs.forEach((neg) => {
   neg.addEventListener('click', substractVal);
 });
