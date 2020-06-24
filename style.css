@@ -118,6 +118,7 @@ canvas {
   border:none;
   width:100px;
   font-size:18px;
+  border-bottom:double 1px rgba(0,0,0,0.1);
 }
 
 .time-category span {
@@ -131,6 +132,12 @@ canvas {
   align-items:center;
   width:20px;
   height:20px;
+}
+
+.time-label {
+  width:99%;
+  text-align:right;
+  padding-right:28px;
 }
 
 .neg, .sum {
