@@ -118,30 +118,37 @@ canvas {
 .time-chart {
   display:flex;
   flex-direction:column;
-  width:300px;
   margin:0 auto;
 }
 
 .time-chart-row {
   display:flex;
-  justify-content:space-around;
-  align-items:center;
-  padding:8px;
+  justify-content:center;
+  align-items:top;
+  padding:4px;
   font-size:14px;
 }
 
 .time-chart-col {
-  width:75px;
+  padding:4px;
 }
 
 .time-chart-value {
-  width:150px;
   font-size:16px;
 }
 
 .time-chart-value input {
-  height:40px;
+  height:15px;
   font-size:16px;
+  width:50px;
+  border:none;
+  background-color:white;
+  color:black;
+  text-align:center;
+}
+
+#timeSleeping {
+  border-bottom:1px double rgba(0,0,0,0.1);
 }
 
 .time-math {
@@ -193,11 +200,6 @@ canvas {
 
 .time-category .num {
   border:none;
-}
-
-#timeTotal {
-  border:none;
-  size:4;
 }
 
 .time-available input {
@@ -362,6 +364,10 @@ input[type="range"]:focus::-ms-fill-upper {
 @media (max-width: 480px) {
   canvas {
     width:100% !important;
+  }
+
+  .time-chart {
+    width:300px;
   }
 
   .time-category {

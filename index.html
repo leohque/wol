@@ -76,26 +76,31 @@ education, career, and finances through formal training and work.</p>
     <div id="part2" class="nodisplay">
       <h2>How is my time spent?</h2>
       <p>Capture how much time you are currently investing into each segment.</p>
-      <p>Based on reality, there's 168 hours per week.</p>
       <h3>How many hours do you spend sleeping?</h3>
       <div class="time-chart">
         <div class="time-chart-row">
-          <div class="time-chart-col">Total Hours per week</div>
-          <div class="time-chart-col time-chart-value"><input type="number" value="168" id="timeTotal" disabled></div>
+          <div class="time-chart-col">
+            Total Hours per week<br>
+            <sub>(based on reality)</sub>
+          </div>
+          <div class="time-chart-col time-chart-value">
+            <input type="text" value="168" id="timeTotal" disabled>
+          </div>
         </div>
         <div class="time-chart-row">
-          <p class="small">👆 This is reality in a 7 day week with 24 hours / day</p>
+          <div class="time-chart-col">
+            Time Sleeping per week<br>
+            <sub>(56 assumes 8 hours per night)</sub>
         </div>
-        <div class="time-chart-row">
-          <div class="time-chart-col">Time Sleeping per week</div>
-          <div class="time-chart-col time-chart-value"><input type="number" value="56" id="timeSleeping"></div>
-        </div>
-        <div class="time-chart-row">
-          <p class="small">👆 Multiply hours per night by 7</p>
+          <div class="time-chart-col time-chart-value">
+            <input type="number" value="56" id="timeSleeping">
+          </div>
         </div>
         <div class="time-chart-row">
           <div class="time-chart-col">Available hours per week</div>
-          <div class="time-chart-col time-chart-value"><input type="text" value="112" id="timeAvailable" disabled></div>
+          <div class="time-chart-col time-chart-value">
+            <input type="text" value="112" id="timeAvailable" disabled>
+          </div>
         </div>
       </div>
 
