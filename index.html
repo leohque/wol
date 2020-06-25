@@ -10,10 +10,18 @@
 <body>
   <div class="container">
     <div id="part1">
-      <h2>How developed are you in this area?</h2>
-      <p>Assign a value to each category,<br>
-        1 being not at all, 10 being fully developed.<br>
-        <sub>Note: You can edit the categories by tapping on them...</sub></p>
+      <h2>Assessing Balance</h2>
+      <p>Use the Wheel to explore where you are using your time, money, and emotional
+resources. For example, many people have developed their lives around investments in
+education, career, and finances through formal training and work.</p>
+      <h5>Energy = time, money, or emotional resources.</h5>
+      <p>
+        INSTRUCTIONS:<br>
+        1. For each segment, ask yourself: how
+        much energy am I giving this area?
+        2. Assign a value to each category, 1 being not at all, 10 being fully developed. (Note: you can edit categories by tapping on them)
+        3. Ask yourself: How smooth is my wheel?
+      </p>
       <div class="intro-category">
         <div class="categories">
           <div class="cat-box">
@@ -59,21 +67,42 @@
         </div>
       </div>
       <canvas id="ctx-fullness"></canvas>
+      <h3>It is common for the ride through life to be lopsided.</h3>
+      <p>Notice the places where you may want to make an
+      intervention for balance. Even if you don’t have time to
+      make any changes now, set the intention.</p>
     </div>
 
     <div id="part2" class="nodisplay">
-      <h2>Where do you actually spend your time?</h2>
+      <h2>How is my time spent?</h2>
+      <p>Capture how much time you are currently investing into each segment.</p>
       <p>Based on reality, there's 168 hours per week.</p>
-      <p>How many hours do you spend sleeping?</p>
-      <div class="time-sleeping">
-        😴 <input type="number" value="56" id="timeSleeping"> hours 💤<br>
-        <sub>(56 assumes 8 hours per night)</sub>
+      <h3>How many hours do you spend sleeping?</h3>
+      <div class="time-chart">
+        <div class="time-chart-row">
+          <div class="time-chart-col">Total Hours per week</div>
+          <div class="time-chart-col time-chart-value"><input type="number" value="168" id="timeTotal" disabled></div>
+        </div>
+        <div class="time-chart-row">
+          <p class="small">👆 This is reality in a 7 day week with 24 hours / day</p>
+        </div>
+        <div class="time-chart-row">
+          <div class="time-chart-col">Time Sleeping per week</div>
+          <div class="time-chart-col time-chart-value"><input type="number" value="56" id="timeSleeping"></div>
+        </div>
+        <div class="time-chart-row">
+          <p class="small">👆 Multiply hours per night by 7</p>
+        </div>
+        <div class="time-chart-row">
+          <div class="time-chart-col">Available hours per week</div>
+          <div class="time-chart-col time-chart-value"><input type="text" value="112" id="timeAvailable" disabled></div>
+        </div>
       </div>
-      <div class="time-values">
-        <div class="time-total nodisplay">Total hours per week: <input type="number" value="168" id="timeTotal" disabled> (168 is reality)</div>
-        <div class="time-available">That means you're awake for <input type="text" value="112" id="timeAvailable" disabled> hours.</div>
-        <p>How do you spend that time?<br></p>
+
+      <div>
+        <h3>Of your available hours for life, where are they spent?</h3>
       </div>
+
       <div class="time-category">
           <input type="text" class="bg-white" disabled>
           <div class="time-label"><strong>Actual</strong></div>

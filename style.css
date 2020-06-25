@@ -11,6 +11,10 @@ body, html {
   background-color:white;
 }
 
+.small {
+  font-size:12px;
+}
+
 .emphasize {
   font-weight:600;
 }
@@ -51,6 +55,7 @@ canvas {
 .container {
   text-align:center;
   margin:0 auto;
+  width:90%;
 }
 
 .cat-box {
@@ -110,6 +115,35 @@ canvas {
   padding:8px;
 }
 
+.time-chart {
+  display:flex;
+  flex-direction:column;
+  width:300px;
+  margin:0 auto;
+}
+
+.time-chart-row {
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  padding:8px;
+  font-size:14px;
+}
+
+.time-chart-col {
+  width:75px;
+}
+
+.time-chart-value {
+  width:150px;
+  font-size:16px;
+}
+
+.time-chart-value input {
+  height:40px;
+  font-size:16px;
+}
+
 .time-math {
   display:flex;
   justify-content:center;
@@ -166,18 +200,6 @@ canvas {
   size:4;
 }
 
-.time-sleeping {
-  margin-block-start:1em;
-  margin-block-end:1em;
-}
-
-.time-sleeping input {
-  border:dashed 1px rgba(0,0,0,0.1);
-  width:45px;
-  font-size:16px;
-  text-align:right;
-}
-
 .time-available input {
   width:25px;
   font-size:16px;
@@ -185,20 +207,10 @@ canvas {
   text-align:right;
 }
 
-.time-values {
-  font-size:16px;
-}
-
 .time-remaining {
   border-top:1px dashed rgba(0,0,0,0.3);
 }
 
-.time-values input, .desired-time-values input {
-  width:50px;
-  border:none;
-  text-align:center;
-  font-size:24px;
-}
 
 /*###################################*/
 /*###########Responsive Range########*/
