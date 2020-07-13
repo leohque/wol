@@ -3,7 +3,6 @@ let session = 1;
 
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
-const saveBtn = document.getElementById('save-btn');
 
 const part1 = document.getElementById('part1');
 const part2 = document.getElementById('part2');
@@ -220,7 +219,7 @@ const timeChart = new Chart(timectx, {
         fontColor: "black"
       },
       display: true,
-      position: 'left'
+      position: 'bottom'
     },
       animation: {
         animateRotate: false
@@ -271,7 +270,7 @@ const desiredtimeChart = new Chart(desiredtimectx, {
         fontColor: "black"
       },
       display: true,
-      position: 'left'
+      position: 'bottom'
     },
       animation: {
         animateRotate: false
@@ -396,20 +395,21 @@ function handleSession() {
       prevBtn.classList.add('hidden');
       part1.classList.remove('nodisplay');
       part2.classList.add('nodisplay');
+      window.scrollTo(0, 0);
       break;
     case 2:
-      saveBtn.classList.add('nodisplay');
       nextBtn.classList.remove('nodisplay');
       prevBtn.classList.remove('hidden');
       part1.classList.add('nodisplay');
       part2.classList.remove('nodisplay');
       part3.classList.add('nodisplay');
+      window.scrollTo(0, 0);
       break;
     case 3:
       nextBtn.classList.add('nodisplay');
-      saveBtn.classList.remove('nodisplay');
       part2.classList.add('nodisplay');
       part3.classList.remove('nodisplay');
+      window.scrollTo(0, 0);
       break;
     default:
       console.log('something is wrong');
@@ -419,7 +419,6 @@ function handleSession() {
 function prevSession(e) {
   e.preventDefault();
   session -= 1;
-  console.log(`session is ${session}`);
   handleSession();
 }
 

@@ -23,7 +23,9 @@ body, html {
   width:50%;
   margin:0 auto;
   display:flex;
-  justify-content:space-between;
+  padding-top:24px;
+  font-size:24px;
+  justify-content:space-around;
 }
 
 .btn {
@@ -115,6 +117,14 @@ canvas {
   padding:8px;
 }
 
+.time-remaining input {
+  background-color:white;
+  border:none;
+  font-size:24px;
+  text-align:center;
+  width:100px;
+}
+
 .time-chart {
   display:flex;
   flex-direction:column;
@@ -148,7 +158,8 @@ canvas {
 }
 
 #timeSleeping {
-  border-bottom:1px double rgba(0,0,0,0.1);
+  border:2px dashed rgba(0,0,0,0.1);
+  padding:8px;
 }
 
 .time-math {
@@ -364,6 +375,11 @@ input[type="range"]:focus::-ms-fill-upper {
 @media (max-width: 480px) {
   canvas {
     width:100% !important;
+    height:auto !important;
+  }
+
+  #navigator {
+    width: 100% !important;
   }
 
   .time-chart {
