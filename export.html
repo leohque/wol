@@ -1,0 +1,1288 @@
+<style>* {
+  touch-action: manipulation;
+}
+
+body, html {
+  overflow-x: hidden;
+}
+
+
+#wol h1, #wol h2, #wol h3, #wol h4, #wol h5 {
+  text-shadow:0 0 32px rgba(0,0,0,0.2);
+}
+
+#wol h2 strong {
+  color:#62508B;
+  text-shadow:0 0 32px rgba(98, 80, 139, 1);
+}
+
+#wol h5 {
+  font-family:'Courier';
+  font-size:18px;
+  font-weight:400;
+}
+
+.bg-white {
+  background-color:white;
+}
+
+.small {
+  font-size:12px;
+}
+
+
+#navigator {
+  width:50%;
+  margin:0 auto;
+  display:flex;
+  padding-top:24px;
+  font-size:24px;
+  justify-content:space-around;
+}
+
+.btn {
+  border:1px solid rgba(0,0,0,0.1);
+  padding:15px 25px;
+  border-radius:3px;
+  transition:all 0.6s;
+  background-color:#604D86;
+  color:white !important;
+  cursor:pointer;
+}
+
+.btn:hover, .neg:hover, .sum:hover {
+  background-color:#5DDD7E;
+}
+
+.nodisplay {
+  display:none !important;
+  opacity:0;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity:0;
+}
+
+canvas {
+  margin:16px auto;
+}
+
+.container {
+  text-align:center;
+  margin:0 auto;
+  width:90%;
+}
+
+.cat-box {
+  display:flex;
+  width:400px;
+  align-items:center;
+  justify-content:space-around;
+}
+
+.cat-box input[type=range] {
+  flex-grow:1;
+  color:black;
+}
+
+.cat-box span {
+  width:20%;
+  text-align:left;
+  padding:8px;
+  font-size:22px;
+}
+
+.categories input {
+  padding:4px;
+  font-size:16px;
+  border:none;
+}
+
+.intro-category {
+  display:flex;
+  justify-content:center;
+}
+
+.categories, .developed, .time-categories, .desired-time-values {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.timecanvas {
+  display:flex;
+}
+
+.timecanvas-controls {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.timecanvas-controls span {
+  cursor:pointer;
+  margin:0 8px;
+}
+
+.emphasize {
+  background-color:#5EDC7D;
+}
+
+.categories input {
+  text-align:right;
+  width:100px;
+}
+
+.developed input {
+  width:400px;
+}
+
+.time-category {
+  display:flex;
+  width:400px;
+  margin:0 auto;
+  justify-content:space-between;
+  padding:8px;
+}
+
+.time-remaining input {
+  background-color:white;
+  border:none;
+  font-size:24px;
+  text-align:center;
+  width:100px;
+}
+
+.time-chart {
+  display:flex;
+  flex-direction:column;
+  margin:0 auto;
+}
+
+.time-chart-row {
+  display:flex;
+  justify-content:center;
+  align-items:top;
+  padding:4px;
+  font-size:14px;
+}
+
+.time-chart-col {
+  padding:4px;
+}
+
+.time-chart-value {
+  font-size:16px;
+}
+
+.time-chart-value input {
+  height:15px;
+  font-size:16px;
+  width:70px;
+  border:none;
+  background-color:white;
+  color:black;
+  text-align:center;
+  height:32px;
+}
+
+#timeSleeping {
+  border:2px dashed #62508B;
+  padding:8px;
+}
+
+#timeSleeping:active {
+  border:2px dashed rgba(93, 221, 126, 0.6);
+}
+
+.time-math {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.time-category .num {
+  width:36px;
+  text-align:center;
+  font-size:24px;
+}
+
+.time-category input[type="text"] {
+  text-align:right;
+  border:none;
+  width:120px;
+  font-size:18px;
+}
+
+.time-category span {
+  padding:8px;
+  font-size:22px;
+  background-color:#604D86;
+  border-radius:50px;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:20px;
+  height:20px;
+}
+
+.time-label {
+  width:72px;
+  text-align:center;
+}
+
+.neg, .sum {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+   user-select: none;
+   cursor:pointer;
+}
+
+.time-category .num {
+  border:none;
+}
+
+.time-available input {
+  width:25px;
+  font-size:16px;
+  border:none;
+  text-align:right;
+}
+
+.time-remaining {
+  border-top:1px dashed rgba(0,0,0,0.3);
+}
+
+
+/*###################################*/
+/*###########Responsive Range########*/
+/*###################################*/
+/*##############Core Style###########*/
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+/*#############Thumb##############*/
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  margin-top: -8px;
+  border-radius:12px;
+  background:rgba(96, 76, 134, 1);
+  border:none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  border-radius:12px;
+  background:rgba(96, 76, 134, 1);
+  border:none;
+}
+
+input[type="range"]::-ms-thumb {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  border-radius:12px;
+  border:none;
+}
+
+
+#fullnessrange1::-webkit-slider-thumb { background: rgba(39, 163, 73, 1); }
+#fullnessrange1::-moz-range-thumb { background: rgba(39, 163, 73, 1); }
+#fullnessrange1::-ms-thumb {
+  background: rgba(39, 163, 73, 1);
+}
+#fullnessrange2::-webkit-slider-thumb { background: rgba(241, 222, 17, 1); }
+#fullnessrange2::-moz-range-thumb { background: rgba(241, 222, 17, 1); }
+#fullnessrange2::-ms-thumb {
+  background: rgba(241, 222, 17, 1);
+}
+#fullnessrange3::-webkit-slider-thumb { background: rgba(236, 129, 37, 1); }
+#fullnessrange3::-moz-range-thumb { background: rgba(236, 129, 37, 1); }
+#fullnessrange3::-ms-thumb {
+  background: rgba(236, 129, 37, 1);
+}
+#fullnessrange4::-webkit-slider-thumb { background: rgba(243, 44, 44, 1); }
+#fullnessrange4::-moz-range-thumb { background: rgba(243, 44, 44, 1); }
+#fullnessrange4::-ms-thumb {
+  background: rgba(243, 44, 44, 1);
+}
+#fullnessrange5::-webkit-slider-thumb { background: rgba(176, 65, 160, 1); }
+#fullnessrange5::-moz-range-thumb { background: rgba(176, 65, 160, 1); }
+#fullnessrange5::-ms-thumb {
+  background: rgba(176, 65, 160, 1);
+}
+#fullnessrange6::-webkit-slider-thumb { background: rgba(96, 76, 134, 1); }
+#fullnessrange6::-moz-range-thumb { background: rgba(96, 76, 134, 1); }
+#fullnessrange6::-ms-thumb {
+  background: rgba(96, 76, 134, 1);
+}
+#fullnessrange7::-webkit-slider-thumb { background: rgba(59, 100, 250, 1); }
+#fullnessrange7::-moz-range-thumb { background: rgba(59, 100, 250, 1); }
+#fullnessrange7::-ms-thumb {
+  background: rgba(59, 100, 250, 1);
+}
+#fullnessrange8::-webkit-slider-thumb { background: rgba(69, 250, 249, 1); }
+#fullnessrange8::-moz-range-thumb { background: rgba(69, 250, 249, 1); }
+#fullnessrange8::-ms-thumb {
+  background: rgba(69, 250, 249, 1);
+}
+
+/*#############Track##############*/
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  background: #ccc;
+}
+
+input[type="range"]:active::-webkit-slider-runnable-track {
+  background: #d6d6d6;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  background: #ccc;
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower {
+  background: #ddd;
+}
+
+input[type="range"]:focus::-ms-fill-lower {
+  background: #ddd;
+}
+
+input[type="range"]::-ms-fill-upper {
+  background: #ccc;
+}
+
+input[type="range"]:focus::-ms-fill-upper {
+  background: #ddd;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   opacity: 1;
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (max-width: 480px) {
+  canvas {
+    width:100% !important;
+    height:auto !important;
+  }
+
+  #navigator {
+    width: 100% !important;
+  }
+
+  .time-chart {
+    width:300px;
+  }
+
+  .time-category {
+    width:100%;
+    padding:8px 0;
+  }
+  .time-category input[type="text"] {
+    font-size:14px;
+    width:70px;
+  }
+}
+</style>
+
+<div class="container" id="wol">
+    <div id="part1">
+      <h2>⚖️<br>Assessing Balance</h2>
+      <p>Use the Wheel to explore where you are using your time, money, and emotional
+        resources. For example, many people have developed their lives around investments in
+      education, career, and finances through formal training and work.</p>
+      <h5>Energy = time, money, or emotional resources.</h5>
+      <canvas id="ctx-fullness"></canvas>
+      <p class="small">
+        <strong>INSTRUCTIONS:</strong><br>
+        1. For each segment, ask yourself: how
+        much energy am I giving this area?<br>
+        2. Assign a value to each category, 1 being not at all, 10 being fully developed.<br><em><strong>(click category names to edit)</strong></em><br>
+        3. Ask yourself: How smooth is my wheel?
+      </p>
+      <div class="intro-category">
+        <div class="categories">
+          <div class="cat-box">
+            <input type="text" id="category1">
+            <input type="range" id="fullnessrange1" name="fullnessrange1" class="fullnessrange" value="5" min="0" max="10">
+            <span type="number" id="fullness1">5</span>
+          </div>
+          <div class="cat-box">
+            <input type="text" id="category2">
+            <input type="range" id="fullnessrange2" name="fullnessrange2" class="fullnessrange" value="5" min="0" max="10">
+            <span type="number" id="fullness2">5</span>
+          </div>
+          <div class="cat-box">
+            <input type="text" id="category3">
+            <input type="range" id="fullnessrange3" name="fullnessrange3" class="fullnessrange" value="5" min="0" max="10">
+            <span type="number" id="fullness3">5</span>
+          </div>
+          <div class="cat-box">
+            <input type="text" id="category4">
+            <input type="range" id="fullnessrange4" name="fullnessrange4" class="fullnessrange" value="5" min="0" max="10">
+            <span type="number" id="fullness4">5</span>
+          </div>
+          <div class="cat-box">
+            <input type="text" id="category5">
+            <input type="range" id="fullnessrange5" name="fullnessrange5" class="fullnessrange" value="5" min="0" max="10">
+            <span type="number" id="fullness5">5</span>
+          </div>
+          <div class="cat-box">
+            <input type="text" id="category6">
+            <input type="range" id="fullnessrange6" name="fullnessrange6" class="fullnessrange" value="5" min="0" max="10">
+            <span type="number" id="fullness6">5</span>
+          </div>
+          <div class="cat-box">
+            <input type="text" id="category7">
+            <input type="range" id="fullnessrange7" name="fullnessrange7" class="fullnessrange" value="5" min="0" max="10">
+            <span type="number" id="fullness7">5</span>
+          </div>
+          <div class="cat-box">
+            <input type="text" id="category8">
+            <input type="range" id="fullnessrange8" name="fullnessrange8" class="fullnessrange" value="5" min="0" max="10">
+            <span type="number" id="fullness8">5</span>
+          </div>
+        </div>
+      </div>
+      <h3>It is common for the ride through life to be lopsided.</h3>
+      <p>Notice the places where you may want to make an
+        intervention for balance. Even if you don’t have time to
+      make any changes now, set the intention.</p>
+    </div>
+
+    <div id="part2" class="nodisplay">
+      <h2>⌛️<br>How is my time spent?</h2>
+      <p>Capture how much time you are currently investing into each segment.</p>
+      <h3></h3>
+      <h3>😴 How many hours do you spend sleeping? 💤</h3>
+      <div class="time-chart">
+        <div class="time-chart-row">
+          <div class="time-chart-col">
+            Total Hours per week<br>
+            <sub>(based on reality)</sub>
+          </div>
+          <div class="time-chart-col time-chart-value">
+            <input type="text" value="168" id="timeTotal" disabled>
+          </div>
+        </div>
+        <div class="time-chart-row">
+          <div class="time-chart-col">
+            Time Sleeping per week<br>
+            <sub>(56 assumes 8 hours per night)</sub>
+          </div>
+          <div class="time-chart-col time-chart-value">
+            <input type="number" value="56" id="timeSleeping">
+          </div>
+        </div>
+        <div class="time-chart-row">
+          <div class="time-chart-col">Available hours per week</div>
+          <div class="time-chart-col time-chart-value">
+            <input type="text" value="112" id="timeAvailable" disabled>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3>Of your available hours for life, where are they spent?</h3>
+      </div>
+
+      <div class="time-category">
+        <input type="text" class="bg-white" disabled>
+        <div class="time-label"><strong>Actual</strong></div>
+        <div class="time-label"><strong>Desired</strong></div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category1" class="bg-white" disabled>
+        <div class="time-math actual">
+          <span class="neg actual" data-num="1">-</span>
+          <input id="time1" class="num1 num" data-time="actual" data-cat="1" data-num="1" value="0">
+          <span class="sum actual" data-num="1">+</span>
+        </div>
+        <div class="time-math">
+          <span class="neg desired" data-num="2">-</span>
+          <input id="desiredtime1" class="num2 num" data-time="desired" data-cat="1" data-num="2" value="0">
+          <span class="sum desired" data-num="2">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category2" class="bg-white" disabled>
+        <div class="time-math actual">
+          <span class="neg actual" data-num="3">-</span>
+          <input id="time2" class="num3 num" data-time="actual" data-cat="2" data-num="3" value="0">
+          <span class="sum actual" data-num="3">+</span>
+        </div>
+        <div class="time-math desired">
+          <span class="neg desired" data-num="4">-</span>
+          <input id="desiredtime2" class="num4 num" data-time="desired" data-cat="2" data-num="4" value="0">
+          <span class="sum desired" data-num="4">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category3" class="bg-white" disabled>
+        <div class="time-math actual">
+          <span class="neg actual" data-num="5">-</span>
+          <input id="time3" class="num5 num" data-time="actual" data-cat="3" data-num="3" value="0">
+          <span class="sum actual" data-num="5">+</span>
+        </div>
+        <div class="time-math desired">
+          <span class="neg desired" data-num="6">-</span>
+          <input id="desiredtime3" class="num6 num" data-time="desired" data-cat="3" data-num="4" value="0">
+          <span class="sum desired" data-num="6">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category4" class="bg-white" disabled>
+        <div class="time-math actual">
+          <span class="neg actual" data-num="7">-</span>
+          <input id="time4" class="num7 num" data-time="actual" data-cat="4" data-num="3" value="0">
+          <span class="sum actual" data-num="7">+</span>
+        </div>
+        <div class="time-math desired">
+          <span class="neg desired" data-num="8">-</span>
+          <input id="desiredtime4" class="num8 num" data-time="desired" data-cat="4" data-num="4" value="0">
+          <span class="sum desired" data-num="8">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category5" class="bg-white" disabled>
+        <div class="time-math actual">
+          <span class="neg actual" data-num="9">-</span>
+          <input id="time5" class="num9 num" data-time="actual" data-cat="5" data-num="3" value="0">
+          <span class="sum actual" data-num="9">+</span>
+        </div>
+        <div class="time-math desired">
+          <span class="neg desired" data-num="11">-</span>
+          <input id="desiredtime5" class="num11 num" data-time="desired" data-cat="5" data-num="4" value="0">
+          <span class="sum desired" data-num="11">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category6" class="bg-white" disabled>
+        <div class="time-math actual">
+          <span class="neg actual" data-num="12">-</span>
+          <input id="time6" class="num12 num" data-time="actual" data-cat="6" data-num="3" value="0">
+          <span class="sum actual" data-num="12">+</span>
+        </div>
+        <div class="time-math desired">
+          <span class="neg desired" data-num="13">-</span>
+          <input id="desiredtime6" class="num13 num" data-time="desired" data-cat="6" data-num="4" value="0">
+          <span class="sum desired" data-num="13">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category7" class="bg-white" disabled>
+        <div class="time-math actual">
+          <span class="neg actual" data-num="14">-</span>
+          <input id="time7" class="num14 num" data-time="actual" data-cat="7" data-num="3" value="0">
+          <span class="sum actual" data-num="14">+</span>
+        </div>
+        <div class="time-math desired">
+          <span class="neg desired" data-num="15">-</span>
+          <input id="desiredtime7" class="num15 num" data-time="desired" data-cat="7" data-num="4" value="0">
+          <span class="sum desired" data-num="15">+</span>
+        </div>
+      </div>
+      <div class="time-category">
+        <input type="text" id="time-category8" class="bg-white" disabled>
+        <div class="time-math actual">
+          <span class="neg actual" data-num="16">-</span>
+          <input id="time8" class="num16 num" data-time="actual" data-cat="8" data-num="3" value="0">
+          <span class="sum actual" data-num="16">+</span>
+        </div>
+        <div class="time-math desired">
+          <span class="neg desired" data-num="17">-</span>
+          <input id="desiredtime8" class="num17 num" data-time="desired" data-cat="8" data-num="4" value="0">
+          <span class="sum desired" data-num="17">+</span>
+        </div>
+      </div>
+      <div class="time-category time-values time-remaining">
+        Remaining Hours
+        <input id="timeRemaining" value="112" disabled>
+        vs.
+        <input id="desiredtimeRemaining" value="112" disabled>
+      </div>
+
+      <div class="timecanvas-controls">
+        <span id="btn-actual" class="actual btn">Actual</span>
+        <span id="btn-desired" class="desired btn">Desired</span>
+      </div>
+
+      <div class="timecanvas">
+        <canvas id="ctx-time" width="400" height="400"></canvas>
+        <canvas id="ctx-desiredtime" width="400" height="400" class="nodisplay"></canvas>
+      </div>
+      <canvas id="ctx-timebar" width="400" height="400"></canvas>
+    </div> <!-- end div#part2 -->
+
+    <div id="part3" class="nodisplay">
+
+      <h3>First we took linear look at time. That can help you identify places where you are struggling, satisfied, or wanting to grow.</h3>
+
+      <h2>How do we make changes with the same amount of hours in a day?</h2>
+
+      <h2>The key is finding your <strong>superpower activities</strong>.</h2>
+      <h3>Superpower activities touch multiple segments of your wheel of life, and often fill you up with energy.</h3>
+
+      <h2>Want to try?</h2>
+
+      <div class="newsletter-subscribe">
+        <input type="email" class="newsletter-email" name="EMAIL" placeholder="Your email address" required />
+        <input type="submit" class="newsletter-signup" value="Receive" />
+      </div>
+    </div> <!-- end div#part3 -->
+
+    <div id="navigator">
+      <div><a id="prev-btn" class="btn hidden">👈 Previous</a></div>
+      <div><a id="next-btn" class="btn">Next 👉</a></div>
+    </div> <!-- end div#navigator -->
+
+  </div> <!-- end div.container -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>// initialize UI
+let session = 1;
+
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+const part1 = document.getElementById('part1');
+const part2 = document.getElementById('part2');
+const part3 = document.getElementById('part3');
+
+const category1 = document.getElementById('category1');
+const category2 = document.getElementById('category2');
+const category3 = document.getElementById('category3');
+const category4 = document.getElementById('category4');
+const category5 = document.getElementById('category5');
+const category6 = document.getElementById('category6');
+const category7 = document.getElementById('category7');
+const category8 = document.getElementById('category8');
+const categories = [category1, category2,
+  category3, category4,
+  category5, category6,
+  category7, category8];
+
+const fullness1 = document.getElementById('fullness1');
+const fullness2 = document.getElementById('fullness2');
+const fullness3 = document.getElementById('fullness3');
+const fullness4 = document.getElementById('fullness4');
+const fullness5 = document.getElementById('fullness5');
+const fullness6 = document.getElementById('fullness6');
+const fullness7 = document.getElementById('fullness7');
+const fullness8 = document.getElementById('fullness8');
+const fullnessValues = [fullness1, fullness2,
+  fullness3, fullness4,
+  fullness5, fullness6,
+  fullness7, fullness8];
+
+const fullnessrange1 = document.getElementById('fullnessrange1');
+const fullnessrange2 = document.getElementById('fullnessrange2');
+const fullnessrange3 = document.getElementById('fullnessrange3');
+const fullnessrange4 = document.getElementById('fullnessrange4');
+const fullnessrange5 = document.getElementById('fullnessrange5');
+const fullnessrange6 = document.getElementById('fullnessrange6');
+const fullnessrange7 = document.getElementById('fullnessrange7');
+const fullnessrange8 = document.getElementById('fullnessrange8');
+const fullnessrangeValues = [fullnessrange1, fullnessrange2,
+  fullnessrange3, fullnessrange4,
+  fullnessrange5, fullnessrange6,
+  fullnessrange7, fullnessrange8];
+
+const timeCategory1 = document.getElementById('time-category1');
+const timeCategory2 = document.getElementById('time-category2');
+const timeCategory3 = document.getElementById('time-category3');
+const timeCategory4 = document.getElementById('time-category4');
+const timeCategory5 = document.getElementById('time-category5');
+const timeCategory6 = document.getElementById('time-category6');
+const timeCategory7 = document.getElementById('time-category7');
+const timeCategory8 = document.getElementById('time-category8');
+const timeCategories = [timeCategory1, timeCategory2,
+  timeCategory3, timeCategory4,
+  timeCategory5, timeCategory6,
+  timeCategory7, timeCategory8];
+
+const timeValue1 = document.getElementById('time1');
+const timeValue2 = document.getElementById('time2');
+const timeValue3 = document.getElementById('time3');
+const timeValue4 = document.getElementById('time4');
+const timeValue5 = document.getElementById('time5');
+const timeValue6 = document.getElementById('time6');
+const timeValue7 = document.getElementById('time7');
+const timeValue8 = document.getElementById('time8');
+const timeValues = [
+  timeValue1, timeValue2,
+  timeValue3, timeValue4,
+  timeValue5, timeValue6,
+  timeValue7, timeValue8];
+
+const desiredtimeValue1 = document.getElementById('desiredtime1');
+const desiredtimeValue2 = document.getElementById('desiredtime2');
+const desiredtimeValue3 = document.getElementById('desiredtime3');
+const desiredtimeValue4 = document.getElementById('desiredtime4');
+const desiredtimeValue5 = document.getElementById('desiredtime5');
+const desiredtimeValue6 = document.getElementById('desiredtime6');
+const desiredtimeValue7 = document.getElementById('desiredtime7');
+const desiredtimeValue8 = document.getElementById('desiredtime8');
+const desiredtimeValues = [
+  desiredtimeValue1, desiredtimeValue2,
+  desiredtimeValue3, desiredtimeValue4,
+  desiredtimeValue5, desiredtimeValue6,
+  desiredtimeValue7, desiredtimeValue8];
+
+const timeTotal = document.getElementById('timeTotal');
+const timeSleeping = document.getElementById('timeSleeping');
+const timeAvailable = document.getElementById('timeAvailable');
+const timeRemaining = document.getElementById('timeRemaining');
+const desiredtimeRemaining = document.getElementById('desiredtimeRemaining');
+
+
+const actualBtn = document.getElementById('btn-actual');
+const desiredBtn = document.getElementById('btn-desired');
+const negs = document.querySelectorAll('.neg');
+const sums = document.querySelectorAll('.sum');
+
+// Charts
+
+const fullnessctx = document.getElementById('ctx-fullness');
+const fullnessChart = new Chart(fullnessctx, {
+  type: 'polarArea',
+  data: {
+      labels: ['Work', 'Finances', 'Health', 'Fun', 'Faith', 'Family', 'Community', 'Learning'],
+      datasets: [{
+          label: 'Wheel of Life',
+          data: [
+            5, 5, 5, 5, 5, 5, 5, 5
+          ],
+          backgroundColor: [
+              'rgba(39, 163, 73, 1)',
+              'rgba(241, 222, 17, 1)',
+              'rgba(236, 129, 37, 1)',
+              'rgba(243, 44, 44, 1)',
+              'rgba(176, 65, 160, 1)',
+              'rgba(96, 76, 134, 1)',
+              'rgba(59, 100, 250, 1)',
+              'rgba(69, 250, 249, 1)'
+          ],
+          borderColor: [
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)'
+          ],
+          borderWidth: 2
+      }]
+  },
+  options: {
+    layout: {
+      padding: {
+        top: 5
+      }
+    },
+    responsive: false,
+    legend: {
+      labels: {
+        fontColor: "black"
+      },
+      display: false,
+      position: 'right'
+    },
+    scale: {
+      display: false
+    },
+      animation: {
+        animateRotate: false
+      },
+      scales: {
+          xAxes: [{
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              display: false
+            }
+          }],
+          yAxes: [{
+              gridLines: {
+                display: false
+              },
+              ticks: {
+                  display: false
+              }
+          }]
+      }
+  }
+});
+
+const timectx = document.getElementById('ctx-time');
+const timeChart = new Chart(timectx, {
+  type: 'pie',
+  data: {
+      labels: ['Work', 'Finances', 'Health', 'Fun', 'Faith', 'Family', 'Community', 'Learning', 'Free'],
+      datasets: [{
+          label: 'Time Spent',
+          data: [
+            0, 0, 0, 0, 0, 0, 0, 0, 112
+          ],
+          backgroundColor: [
+              'rgba(39, 163, 73, 1)',
+              'rgba(241, 222, 17, 1)',
+              'rgba(236, 129, 37, 1)',
+              'rgba(243, 44, 44, 1)',
+              'rgba(176, 65, 160, 1)',
+              'rgba(96, 76, 134, 1)',
+              'rgba(59, 100, 250, 1)',
+              'rgba(69, 250, 249, 1)',
+              'rgba(255, 255, 255, 1)'
+          ],
+          borderColor: [
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)'
+          ],
+          borderWidth: 2
+      }
+      ]
+  },
+  options: {
+    responsive: false,
+    legend: {
+      labels: {
+        fontColor: "black"
+      },
+      display: true,
+      position: 'bottom'
+    },
+      animation: {
+        animateRotate: false
+      }
+  }
+});
+
+const desiredtimectx = document.getElementById('ctx-desiredtime');
+const desiredtimeChart = new Chart(desiredtimectx, {
+  type: 'pie',
+  data: {
+      labels: ['Work', 'Finances', 'Health', 'Fun', 'Faith', 'Family', 'Community', 'Learning', 'Free'],
+      datasets: [{
+          label: 'Time Spent',
+          data: [
+            0, 0, 0, 0, 0, 0, 0, 0, 112
+          ],
+          backgroundColor: [
+              'rgba(39, 163, 73, 1)',
+              'rgba(241, 222, 17, 1)',
+              'rgba(236, 129, 37, 1)',
+              'rgba(243, 44, 44, 1)',
+              'rgba(176, 65, 160, 1)',
+              'rgba(96, 76, 134, 1)',
+              'rgba(59, 100, 250, 1)',
+              'rgba(69, 250, 249, 1)',
+              'rgba(255, 255, 255, 1)'
+          ],
+          borderColor: [
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)'
+          ],
+          borderWidth: 2
+      }
+      ]
+  },
+  options: {
+    responsive: false,
+    legend: {
+      labels: {
+        fontColor: "black"
+      },
+      display: true,
+      position: 'bottom'
+    },
+      animation: {
+        animateRotate: false
+      }
+  }
+});
+
+const timebarctx = document.getElementById('ctx-timebar');
+const timebarChart = new Chart(timebarctx, {
+  type: 'horizontalBar',
+  data: {
+      labels: ['Work', 'Finances', 'Health', 'Fun', 'Faith', 'Family', 'Community', 'Learning', 'Free'],
+      datasets: [{
+          label: 'Time Spent',
+          data: [
+            0, 0, 0, 0, 0, 0, 0, 0, 112
+          ],
+          backgroundColor: [
+              'rgba(39, 163, 73, 1)',
+              'rgba(241, 222, 17, 1)',
+              'rgba(236, 129, 37, 1)',
+              'rgba(243, 44, 44, 1)',
+              'rgba(176, 65, 160, 1)',
+              'rgba(96, 76, 134, 1)',
+              'rgba(59, 100, 250, 1)',
+              'rgba(69, 250, 249, 1)',
+              'rgba(255, 255, 255, 1)'
+          ],
+          borderColor: [
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)'
+          ],
+          borderWidth: 2
+      },
+          {
+          label: 'Time Desired',
+          data: [
+            0, 0, 0, 0, 0, 0, 0, 0, 112
+          ],
+          backgroundColor: [
+              'rgba(39, 163, 73, 0.4)',
+              'rgba(241, 222, 17, 0.4)',
+              'rgba(236, 129, 37, 0.4)',
+              'rgba(243, 44, 44, 0.4)',
+              'rgba(176, 65, 160, 0.4)',
+              'rgba(96, 76, 134, 0.4)',
+              'rgba(59, 100, 250, 0.4)',
+              'rgba(69, 250, 249, 0.4)',
+              'rgba(255, 255, 255, 0.4)'
+          ],
+          borderColor: [
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)',
+              'rgba(0,0,0,0.8)'
+          ],
+          borderWidth: 2
+      }
+      ]
+  },
+  options: {
+    responsive: false,
+    legend: {
+      display: false
+    },
+      animation: {
+        animateRotate: false
+      }
+  }
+});
+
+
+// Utils
+
+
+
+function handleTimeChart() {
+  if (this.classList.contains('actual')) {
+    desiredtimectx.classList.add('nodisplay');
+    timectx.classList.remove('nodisplay');
+    actualBtn.classList.add('emphasize');
+    desiredBtn.classList.remove('emphasize');
+  } else {
+    timectx.classList.add('nodisplay');
+    desiredtimectx.classList.remove('nodisplay');
+    desiredBtn.classList.add('emphasize');
+    actualBtn.classList.remove('emphasize');
+  }
+}
+
+sums.forEach((sum) => sum.addEventListener('click', handleTimeChart));
+sums.forEach((sum) => sum.addEventListener('mouseover', handleTimeChart));
+negs.forEach((neg) => neg.addEventListener('click', handleTimeChart));
+negs.forEach((neg) => neg.addEventListener('mouseover', handleTimeChart));
+
+
+actualBtn.addEventListener('click', handleTimeChart);
+actualBtn.addEventListener('mouseover', handleTimeChart);
+desiredBtn.addEventListener('click', handleTimeChart);
+desiredBtn.addEventListener('mouseover', handleTimeChart);
+
+
+
+
+// Session Handlers
+
+function handleSession() {
+  switch (session) {
+    case 1:
+      prevBtn.classList.add('hidden');
+      part1.classList.remove('nodisplay');
+      part2.classList.add('nodisplay');
+      window.scrollTo(0, 0);
+      break;
+    case 2:
+      nextBtn.classList.remove('nodisplay');
+      prevBtn.classList.remove('hidden');
+      part1.classList.add('nodisplay');
+      part2.classList.remove('nodisplay');
+      part3.classList.add('nodisplay');
+      window.scrollTo(0, 0);
+      break;
+    case 3:
+      nextBtn.classList.add('nodisplay');
+      part2.classList.add('nodisplay');
+      part3.classList.remove('nodisplay');
+      window.scrollTo(0, 0);
+      break;
+    default:
+      console.log('something is wrong');
+  }
+}
+
+function prevSession(e) {
+  e.preventDefault();
+  session -= 1;
+  handleSession();
+}
+
+function nextSession(e) {
+  e.preventDefault();
+  session += 1;
+  console.log(`session is ${session}`);
+  handleSession();
+}
+
+prevBtn.addEventListener('click', prevSession);
+nextBtn.addEventListener('click', nextSession);
+
+// Chart Data Manipulation
+
+function updateCharts() {
+  fullnessChart.update();
+  timeChart.update();
+  timebarChart.update();
+  desiredtimeChart.update();
+}
+
+function changeCategory() {
+  categories.forEach((category, i) => {
+    fullnessChart.data.labels[i] = category.value;
+    timeChart.data.labels[i] = category.value;
+    desiredtimeChart.data.labels[i] = category.value;
+    timebarChart.data.labels[i] = category.value;
+  });
+  timeCategories.forEach((category, i) => {
+    category.value = fullnessChart.data.labels[i];
+  });
+  updateCharts();
+}
+
+categories.forEach((category, index) => {
+  category.value = fullnessChart.data.labels[index];
+  category.addEventListener('change', changeCategory);
+});
+
+timeCategories.forEach((category, index) => {
+  category.value = fullnessChart.data.labels[index];
+});
+
+function updateFullnessNumber(val) {
+  const i = val.id.slice(-1) - 1;
+  fullnessValues[i].innerText = `${val.value}`;
+}
+
+function modifyFullness() {
+  updateFullnessNumber(this);
+  fullnessrangeValues.forEach((piece, i) => {
+    fullnessChart.data.datasets[0].data[i] = piece.value;
+  });
+  updateCharts();
+}
+
+fullnessrangeValues.forEach((piece) => {
+  piece.addEventListener('change', modifyFullness.bind(piece));
+  piece.addEventListener('input', modifyFullness.bind(piece));
+});
+
+
+function modifyRemainingTime() {
+  let t = 0;
+  timeValues.forEach((value) => {
+    if (value.value) { t += parseInt(value.value); }
+  });
+  let available = timeAvailable.value;
+  let remaining = available - t;
+  timeRemaining.value = remaining;
+}
+
+function modifyDesiredRemainingTime() {
+  let t = 0;
+  desiredtimeValues.forEach((val) => {
+    if (val.value) { t += parseInt(val.value); }
+  });
+  const avail = timeAvailable.value;
+  const remaining = avail - t;
+  desiredtimeRemaining.value = remaining;
+  adjustTimeChart();
+  adjustDesiredTimeChart();
+}
+
+
+function modifyTime() {
+  const total = timeTotal.value;
+  const sleeping = timeSleeping.value;
+  const available = total - sleeping;
+  timeAvailable.value = available;
+  desiredtimeRemaining.value = available;
+  modifyRemainingTime();
+  modifyDesiredRemainingTime();
+}
+
+
+timeTotal.addEventListener('change', modifyTime);
+timeSleeping.addEventListener('change', modifyTime);
+timeAvailable.addEventListener('change', modifyTime);
+
+function adjustDesiredTimeChart() {
+  desiredtimeValues.forEach((val, i) => {
+    if(val.value) {
+      desiredtimeChart.data.datasets[0].data[i] = val.value;
+      timebarChart.data.datasets[1].data[i] = val.value;
+    }
+  });
+  desiredtimeChart.data.datasets[0].data[8] = desiredtimeRemaining.value;
+  timebarChart.data.datasets[1].data[8] = desiredtimeRemaining.value;
+  updateCharts();
+}
+
+function adjustTimeChart() {
+  timeValues.forEach((val, i) => {
+    if(val.value) {
+      timeChart.data.datasets[0].data[i] = val.value;
+      timebarChart.data.datasets[0].data[i] = val.value;
+    }
+  });
+  timeChart.data.datasets[0].data[8] = timeRemaining.value;
+  timebarChart.data.datasets[0].data[8] = timeRemaining.value;
+  updateCharts();
+}
+
+timeValues.forEach((value) => {
+  value.addEventListener('change', modifyRemainingTime);
+  value.addEventListener('change', adjustTimeChart);
+});
+desiredtimeValues.forEach((value) => {
+  value.addEventListener('change', modifyDesiredRemainingTime);
+  value.addEventListener('change', adjustDesiredTimeChart);
+});
+
+
+function substractVal() {
+  let cat = document.querySelector(`.num${this.dataset.num}`);
+  if ((parseInt(cat.value)) !== 0) {
+    let val = parseInt(cat.value) - 1;
+    cat.value = val;
+    modifyTime();
+  } else {
+    cat.value = 0;
+  }
+}
+
+function addVal() {
+  let cat = document.querySelector(`.num${this.dataset.num}`);
+  let val = parseInt(cat.value) + 1;
+  cat.value = val;
+  modifyTime();
+}
+
+negs.forEach((neg) => {
+  neg.addEventListener('click', substractVal);
+});
+sums.forEach((sum) => {
+  sum.addEventListener('click', addVal);
+});
+
+
+
+
+// const emailbody = "<h1>Can this have HTML?</h1>";
+
+// Email.send({
+//     SecureToken : "5d1d664d-d401-4ec3-a128-3f508a9d629f",
+//     To : 'leohque@gmail.com',
+//     From : "leohque@gmail.com",
+//     Subject : "This is the subject",
+//     Body : emailbody
+// }).then(
+//   message => alert(message)
+// );
+</script>

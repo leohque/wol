@@ -386,6 +386,28 @@ desiredBtn.addEventListener('mouseover', handleTimeChart);
 
 
 
+function sendEmail() {
+  let emailbody = `
+  Somebody used the Wheel of Life and got all the way to Part 3.<br>
+  Their data shows...<br>
+  ${category1.value} - Fullness: ${fullnessrange1.value} - Time: ${timeValue1.value} vs Desired: ${desiredtimeValue1.value}<br>
+  ${category2.value} - Fullness: ${fullnessrange2.value} - Time: ${timeValue2.value} vs Desired: ${desiredtimeValue2.value}<br>
+  ${category3.value} - Fullness: ${fullnessrange3.value} - Time: ${timeValue3.value} vs Desired: ${desiredtimeValue3.value}<br>
+  ${category4.value} - Fullness: ${fullnessrange4.value} - Time: ${timeValue4.value} vs Desired: ${desiredtimeValue4.value}<br>
+  ${category5.value} - Fullness: ${fullnessrange5.value} - Time: ${timeValue5.value} vs Desired: ${desiredtimeValue5.value}<br>
+  ${category6.value} - Fullness: ${fullnessrange6.value} - Time: ${timeValue6.value} vs Desired: ${desiredtimeValue6.value}<br>
+  ${category7.value} - Fullness: ${fullnessrange7.value} - Time: ${timeValue7.value} vs Desired: ${desiredtimeValue7.value}<br>
+  ${category8.value} - Fullness: ${fullnessrange8.value} - Time: ${timeValue8.value} vs Desired: ${desiredtimeValue8.value}<br>
+  Sleeping hours: ${timeSleeping.value}
+  `;
+  Email.send({
+      SecureToken : "5d1d664d-d401-4ec3-a128-3f508a9d629f",
+      To : 'leohque@gmail.com',
+      From : "leohque@gmail.com",
+      Subject : "Somebody used the WoL!",
+      Body : emailbody
+  });
+}
 
 // Session Handlers
 
@@ -410,6 +432,7 @@ function handleSession() {
       part2.classList.add('nodisplay');
       part3.classList.remove('nodisplay');
       window.scrollTo(0, 0);
+      sendEmail();
       break;
     default:
       console.log('something is wrong');
@@ -580,16 +603,3 @@ sums.forEach((sum) => {
 });
 
 
-
-
-// const emailbody = "<h1>Can this have HTML?</h1>";
-
-// Email.send({
-//     SecureToken : "5d1d664d-d401-4ec3-a128-3f508a9d629f",
-//     To : 'leohque@gmail.com',
-//     From : "leohque@gmail.com",
-//     Subject : "This is the subject",
-//     Body : emailbody
-// }).then(
-//   message => alert(message)
-// );
