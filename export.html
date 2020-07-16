@@ -1,4 +1,5 @@
-<style>* {
+<style>
+  * {
   touch-action: manipulation;
 }
 
@@ -13,7 +14,7 @@ body, html {
 
 #wol h2 strong {
   color:#62508B;
-  text-shadow:0 0 32px rgba(98, 80, 139, 1);
+  text-shadow:0 0 32px rgba(98, 80, 139, 0.6);
 }
 
 #wol h5 {
@@ -163,7 +164,7 @@ canvas {
 .time-chart-row {
   display:flex;
   justify-content:center;
-  align-items:top;
+  align-items:center;
   padding:4px;
   font-size:14px;
 }
@@ -417,8 +418,14 @@ input[type=number]::-webkit-outer-spin-button {
     height:auto !important;
   }
 
+  .btn {
+    padding:12px 8px;
+  }
+
   #navigator {
     width: 100% !important;
+    font-size:20px;
+    justify-content:space-between;
   }
 
   .time-chart {
@@ -667,14 +674,14 @@ input[type=number]::-webkit-outer-spin-button {
 
     <div id="part3" class="nodisplay">
 
-      <h3>First we took linear look at time. That can help you identify places where you are struggling, satisfied, or wanting to grow.</h3>
+      <h4>First we took linear look at time. That can help you identify places where you are struggling, satisfied, or wanting to grow.</h4>
 
-      <h2>How do we make changes with the same amount of hours in a day?</h2>
+      <h3>How do we make changes with the same amount of hours in a day?</h3>
 
-      <h2>The key is finding your <strong>superpower activities</strong>.</h2>
-      <h3>Superpower activities touch multiple segments of your wheel of life, and often fill you up with energy.</h3>
+      <h3>The key is finding your <strong>superpower activities</strong>.</h3>
+      <h4>Superpower activities touch multiple segments of your wheel of life, and often fill you up with energy.</h4>
 
-      <h2>Want to try?</h2>
+      <h3>Want to try?</h3>
 
       <div class="newsletter-subscribe">
         <input type="email" class="newsletter-email" name="EMAIL" placeholder="Your email address" required />
@@ -691,6 +698,7 @@ input[type=number]::-webkit-outer-spin-button {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
   <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script>// initialize UI
+// initialize UI
 let session = 1;
 
 const prevBtn = document.getElementById('prev-btn');
@@ -1078,6 +1086,28 @@ desiredBtn.addEventListener('mouseover', handleTimeChart);
 
 
 
+function sendEmail() {
+  let emailbody = `
+  Somebody used the Wheel of Life and got all the way to Part 3.<br>
+  Their data shows...<br>
+  ${category1.value} - Fullness: ${fullnessrange1.value} - Time: ${timeValue1.value} vs Desired: ${desiredtimeValue1.value}<br>
+  ${category2.value} - Fullness: ${fullnessrange2.value} - Time: ${timeValue2.value} vs Desired: ${desiredtimeValue2.value}<br>
+  ${category3.value} - Fullness: ${fullnessrange3.value} - Time: ${timeValue3.value} vs Desired: ${desiredtimeValue3.value}<br>
+  ${category4.value} - Fullness: ${fullnessrange4.value} - Time: ${timeValue4.value} vs Desired: ${desiredtimeValue4.value}<br>
+  ${category5.value} - Fullness: ${fullnessrange5.value} - Time: ${timeValue5.value} vs Desired: ${desiredtimeValue5.value}<br>
+  ${category6.value} - Fullness: ${fullnessrange6.value} - Time: ${timeValue6.value} vs Desired: ${desiredtimeValue6.value}<br>
+  ${category7.value} - Fullness: ${fullnessrange7.value} - Time: ${timeValue7.value} vs Desired: ${desiredtimeValue7.value}<br>
+  ${category8.value} - Fullness: ${fullnessrange8.value} - Time: ${timeValue8.value} vs Desired: ${desiredtimeValue8.value}<br>
+  Sleeping hours: ${timeSleeping.value}
+  `;
+  Email.send({
+      SecureToken : "5d1d664d-d401-4ec3-a128-3f508a9d629f",
+      To : 'leohque@gmail.com',
+      From : "leohque@gmail.com",
+      Subject : "Somebody used the WoL!",
+      Body : emailbody
+  });
+}
 
 // Session Handlers
 
@@ -1102,6 +1132,7 @@ function handleSession() {
       part2.classList.add('nodisplay');
       part3.classList.remove('nodisplay');
       window.scrollTo(0, 0);
+      sendEmail();
       break;
     default:
       console.log('something is wrong');
@@ -1270,19 +1301,4 @@ negs.forEach((neg) => {
 sums.forEach((sum) => {
   sum.addEventListener('click', addVal);
 });
-
-
-
-
-// const emailbody = "<h1>Can this have HTML?</h1>";
-
-// Email.send({
-//     SecureToken : "5d1d664d-d401-4ec3-a128-3f508a9d629f",
-//     To : 'leohque@gmail.com',
-//     From : "leohque@gmail.com",
-//     Subject : "This is the subject",
-//     Body : emailbody
-// }).then(
-//   message => alert(message)
-// );
 </script>
