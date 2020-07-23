@@ -387,18 +387,37 @@ desiredBtn.addEventListener('mouseover', handleTimeChart);
 
 
 function sendEmail() {
-  let emailbody = `
+  let emailbody = `Hello,<br>
+  <br>
   Somebody used the Wheel of Life and got all the way to Part 3.<br>
   Their data shows...<br>
-  ${category1.value} - Fullness: ${fullnessrange1.value} - Time: ${timeValue1.value} vs Desired: ${desiredtimeValue1.value}<br>
-  ${category2.value} - Fullness: ${fullnessrange2.value} - Time: ${timeValue2.value} vs Desired: ${desiredtimeValue2.value}<br>
-  ${category3.value} - Fullness: ${fullnessrange3.value} - Time: ${timeValue3.value} vs Desired: ${desiredtimeValue3.value}<br>
-  ${category4.value} - Fullness: ${fullnessrange4.value} - Time: ${timeValue4.value} vs Desired: ${desiredtimeValue4.value}<br>
-  ${category5.value} - Fullness: ${fullnessrange5.value} - Time: ${timeValue5.value} vs Desired: ${desiredtimeValue5.value}<br>
-  ${category6.value} - Fullness: ${fullnessrange6.value} - Time: ${timeValue6.value} vs Desired: ${desiredtimeValue6.value}<br>
-  ${category7.value} - Fullness: ${fullnessrange7.value} - Time: ${timeValue7.value} vs Desired: ${desiredtimeValue7.value}<br>
-  ${category8.value} - Fullness: ${fullnessrange8.value} - Time: ${timeValue8.value} vs Desired: ${desiredtimeValue8.value}<br>
-  Sleeping hours: ${timeSleeping.value}
+  <h5>${category1.value}</h5>
+  <strong>Fullness</strong>: ${fullnessrange1.value}<br>
+  <strong>Time</strong>: Actual ${timeValue1.value} vs Desired ${desiredtimeValue1.value}<br>
+  <h5>${category2.value}</h5>
+  <strong>Fullness</strong>: ${fullnessrange2.value}<br>
+  <strong>Time</strong>: Actual ${timeValue2.value} vs Desired ${desiredtimeValue2.value}<br>
+  <h5>${category3.value}</h5>
+  <strong>Fullness</strong>: ${fullnessrange3.value}<br>
+  <strong>Time</strong>: Actual ${timeValue3.value} vs Desired ${desiredtimeValue3.value}<br>
+  <h5>${category4.value}</h5>
+  <strong>Fullness</strong>: ${fullnessrange4.value}<br>
+  <strong>Time</strong>: Actual ${timeValue4.value} vs Desired ${desiredtimeValue4.value}<br>
+  <h5>${category5.value}</h5>
+  <strong>Fullness</strong>: ${fullnessrange5.value}<br>
+  <strong>Time</strong>: Actual ${timeValue5.value} vs Desired ${desiredtimeValue5.value}<br>
+  <h5>${category6.value}</h5>
+  <strong>Fullness</strong>: ${fullnessrange6.value}<br>
+  <strong>Time</strong>: Actual ${timeValue6.value} vs Desired ${desiredtimeValue6.value}<br>
+  <h5>${category7.value}</h5>
+  <strong>Fullness</strong>: ${fullnessrange7.value}<br>
+  <strong>Time</strong>: Actual ${timeValue7.value} vs Desired ${desiredtimeValue7.value}<br>
+  <h5>${category8.value}</h5>
+  <strong>Fullness</strong>: ${fullnessrange8.value}<br>
+  <strong>Time</strong>: Actual ${timeValue8.value} vs Desired ${desiredtimeValue8.value}<br>
+  Sleeping hours: ${timeSleeping.value}...<br><br>
+
+  Interesting! 🤔
   `;
   Email.send({
       SecureToken : "5d1d664d-d401-4ec3-a128-3f508a9d629f",
@@ -410,6 +429,8 @@ function sendEmail() {
 }
 
 // Session Handlers
+
+let sent = false;
 
 function handleSession() {
   switch (session) {
@@ -432,7 +453,10 @@ function handleSession() {
       part2.classList.add('nodisplay');
       part3.classList.remove('nodisplay');
       window.scrollTo(0, 0);
-      sendEmail();
+      if (!sent) {
+        sendEmail();
+        sent = true;
+      }
       break;
     default:
       console.log('something is wrong');
@@ -448,7 +472,6 @@ function prevSession(e) {
 function nextSession(e) {
   e.preventDefault();
   session += 1;
-  console.log(`session is ${session}`);
   handleSession();
 }
 
