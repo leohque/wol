@@ -391,28 +391,28 @@ function sendEmail() {
   <br>
   Somebody used the Wheel of Life and got all the way to Part 3.<br>
   Their data shows...<br>
-  <h5>${category1.value}</h5>
+  <h2>${category1.value}</h2>
   <strong>Fullness</strong>: ${fullnessrange1.value}<br>
   <strong>Time</strong>: Actual ${timeValue1.value} vs Desired ${desiredtimeValue1.value}<br>
-  <h5>${category2.value}</h5>
+  <h2>${category2.value}</h2>
   <strong>Fullness</strong>: ${fullnessrange2.value}<br>
   <strong>Time</strong>: Actual ${timeValue2.value} vs Desired ${desiredtimeValue2.value}<br>
-  <h5>${category3.value}</h5>
+  <h2>${category3.value}</h2>
   <strong>Fullness</strong>: ${fullnessrange3.value}<br>
   <strong>Time</strong>: Actual ${timeValue3.value} vs Desired ${desiredtimeValue3.value}<br>
-  <h5>${category4.value}</h5>
+  <h2>${category4.value}</h2>
   <strong>Fullness</strong>: ${fullnessrange4.value}<br>
   <strong>Time</strong>: Actual ${timeValue4.value} vs Desired ${desiredtimeValue4.value}<br>
-  <h5>${category5.value}</h5>
+  <h2>${category5.value}</h2>
   <strong>Fullness</strong>: ${fullnessrange5.value}<br>
   <strong>Time</strong>: Actual ${timeValue5.value} vs Desired ${desiredtimeValue5.value}<br>
-  <h5>${category6.value}</h5>
+  <h2>${category6.value}</h2>
   <strong>Fullness</strong>: ${fullnessrange6.value}<br>
   <strong>Time</strong>: Actual ${timeValue6.value} vs Desired ${desiredtimeValue6.value}<br>
-  <h5>${category7.value}</h5>
+  <h2>${category7.value}</h2>
   <strong>Fullness</strong>: ${fullnessrange7.value}<br>
   <strong>Time</strong>: Actual ${timeValue7.value} vs Desired ${desiredtimeValue7.value}<br>
-  <h5>${category8.value}</h5>
+  <h2>${category8.value}</h2>
   <strong>Fullness</strong>: ${fullnessrange8.value}<br>
   <strong>Time</strong>: Actual ${timeValue8.value} vs Desired ${desiredtimeValue8.value}<br>
   Sleeping hours: ${timeSleeping.value}...<br><br>
@@ -421,7 +421,7 @@ function sendEmail() {
   `;
   Email.send({
       SecureToken : "5d1d664d-d401-4ec3-a128-3f508a9d629f",
-      To : 'leohque@gmail.com',
+      To : 'cc.danielle@gmail.com',
       From : "leohque@gmail.com",
       Subject : "Somebody used the WoL!",
       Body : emailbody
@@ -626,3 +626,4 @@ sums.forEach((sum) => {
 });
 
 
+document.querySelector('.container .newsletter-signup').value = "Receive";

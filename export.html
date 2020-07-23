@@ -9,10 +9,10 @@ body, html {
 
 
 #wol h1, #wol h2, #wol h3, #wol h4, #wol h5 {
-  text-shadow:0 0 32px rgba(0,0,0,0.2);
+  text-shadow:0 0 32px rgba(0,0,0,0.1);
 }
 
-#wol h2 strong {
+#wol h1 strong, #wol h2 strong, #wol h3 strong, #wol h4 strong, #wol h5 strong {
   color:#62508B;
   text-shadow:0 0 32px rgba(98, 80, 139, 0.6);
 }
@@ -29,6 +29,14 @@ body, html {
 
 .small {
   font-size:12px;
+}
+
+.wheel-gallery img {
+  width:200px;
+}
+
+.wol-subscribe {
+  margin:16px;
 }
 
 
@@ -456,9 +464,14 @@ input[type=number]::-webkit-outer-spin-button {
   .time-remaining {
     font-size:14px;
   }
+
+  .wheel-gallery img {
+    width:100px;
+  }
 }
 
 </style>
+
 
 
   <div class="container" id="wol">
@@ -694,8 +707,14 @@ input[type=number]::-webkit-outer-spin-button {
       <p>First we took a linear look at time. That can help you identify places where you are struggling, satisfied, or wanting to grow.</p>
 
       <h3>How do we make changes with the same amount of hours in a day?</h3>
-      <h3>The key is finding your <em>superpower activities</em>.</h3>
+      <h3>The key is finding your <strong>superpower activities</strong>.</h3>
       <p>Superpower activities touch multiple segments of your wheel of life, and often fill you up with energy.</p>
+
+      <div class="wheel-gallery">
+        <img src="https://infinitegrowth.rocks/wp-content/uploads/2020/07/mandala-1.png" alt="mandala wheel">
+        <img src="https://infinitegrowth.rocks/wp-content/uploads/2020/07/meaningful-pursuits-perspective-wheel.png" alt="meaningful pursuits perspective wheel">
+        <img src="https://infinitegrowth.rocks/wp-content/uploads/2020/07/mandala-2.png" alt="mandala wheel">
+      </div>
 
       <h3>Want to try?</h3>
 
@@ -713,6 +732,7 @@ input[type=number]::-webkit-outer-spin-button {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
   <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script>// initialize UI
+// initialize UI
 let session = 1;
 
 const prevBtn = document.getElementById('prev-btn');
@@ -1107,31 +1127,31 @@ function sendEmail() {
   Their data shows...<br>
   <h5>${category1.value}</h5>
   <strong>Fullness</strong>: ${fullnessrange1.value}<br>
-  <strong>Time</strong>: ${timeValue1.value} vs Desired: ${desiredtimeValue1.value}<br>
+  <strong>Time</strong>: Actual ${timeValue1.value} vs Desired ${desiredtimeValue1.value}<br>
   <h5>${category2.value}</h5>
   <strong>Fullness</strong>: ${fullnessrange2.value}<br>
-  <strong>Time</strong>: ${timeValue2.value} vs Desired: ${desiredtimeValue2.value}<br>
+  <strong>Time</strong>: Actual ${timeValue2.value} vs Desired ${desiredtimeValue2.value}<br>
   <h5>${category3.value}</h5>
   <strong>Fullness</strong>: ${fullnessrange3.value}<br>
-  <strong>Time</strong>: ${timeValue3.value} vs Desired: ${desiredtimeValue3.value}<br>
+  <strong>Time</strong>: Actual ${timeValue3.value} vs Desired ${desiredtimeValue3.value}<br>
   <h5>${category4.value}</h5>
   <strong>Fullness</strong>: ${fullnessrange4.value}<br>
-  <strong>Time</strong>: ${timeValue4.value} vs Desired: ${desiredtimeValue4.value}<br>
+  <strong>Time</strong>: Actual ${timeValue4.value} vs Desired ${desiredtimeValue4.value}<br>
   <h5>${category5.value}</h5>
   <strong>Fullness</strong>: ${fullnessrange5.value}<br>
-  <strong>Time</strong>: ${timeValue5.value} vs Desired: ${desiredtimeValue5.value}<br>
+  <strong>Time</strong>: Actual ${timeValue5.value} vs Desired ${desiredtimeValue5.value}<br>
   <h5>${category6.value}</h5>
   <strong>Fullness</strong>: ${fullnessrange6.value}<br>
-  <strong>Time</strong>: ${timeValue6.value} vs Desired: ${desiredtimeValue6.value}<br>
+  <strong>Time</strong>: Actual ${timeValue6.value} vs Desired ${desiredtimeValue6.value}<br>
   <h5>${category7.value}</h5>
   <strong>Fullness</strong>: ${fullnessrange7.value}<br>
-  <strong>Time</strong>: ${timeValue7.value} vs Desired: ${desiredtimeValue7.value}<br>
+  <strong>Time</strong>: Actual ${timeValue7.value} vs Desired ${desiredtimeValue7.value}<br>
   <h5>${category8.value}</h5>
   <strong>Fullness</strong>: ${fullnessrange8.value}<br>
-  <strong>Time</strong>: ${timeValue8.value} vs Desired: ${desiredtimeValue8.value}<br>
-  Sleeping hours: ${timeSleeping.value}
+  <strong>Time</strong>: Actual ${timeValue8.value} vs Desired ${desiredtimeValue8.value}<br>
+  Sleeping hours: ${timeSleeping.value}...<br><br>
 
-  Interesting!
+  Interesting! 🤔
   `;
   Email.send({
       SecureToken : "5d1d664d-d401-4ec3-a128-3f508a9d629f",
@@ -1143,6 +1163,8 @@ function sendEmail() {
 }
 
 // Session Handlers
+
+let sent = false;
 
 function handleSession() {
   switch (session) {
@@ -1165,7 +1187,10 @@ function handleSession() {
       part2.classList.add('nodisplay');
       part3.classList.remove('nodisplay');
       window.scrollTo(0, 0);
-      sendEmail();
+      if (!sent) {
+        sendEmail();
+        sent = true;
+      }
       break;
     default:
       console.log('something is wrong');
@@ -1333,5 +1358,4 @@ negs.forEach((neg) => {
 sums.forEach((sum) => {
   sum.addEventListener('click', addVal);
 });
-
 </script>

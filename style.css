@@ -414,6 +414,14 @@ input[type=number]::-webkit-outer-spin-button {
    opacity: 1;
 }
 
+.newsletter-subscribe {
+  display:flex;justify-content:center;align-items:center;
+}
+
+.newsletter-subscribe .newsletter-email {
+  width:50%;
+}
+
 /*
   ##Device = Most of the Smartphones Mobiles (Portrait)
   ##Screen = B/w 320px to 479px
@@ -425,7 +433,11 @@ input[type=number]::-webkit-outer-spin-button {
     height:auto;
   }
 
-  #ctx-time {
+  #wol h2 {
+    line-height:1.7em;
+  }
+
+  #ctx-time, #ctx-desiredtime {
     height:300px !important;
   }
 
